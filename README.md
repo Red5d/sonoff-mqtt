@@ -20,8 +20,9 @@ Power Commands - Control the 120V relay on the device. "<sonoff name> <status>" 
 Other Commands - These tell the device to send status information or perform other functions that don't affect the relay power.
 * relay status - Returns relay status like: "<sonoff name> on"
 * list - This is sent to /home/sonoffctl (control all devices) and tells all the devices to send their name and software version to the /home/sonoff MQTT topic.
-* name <new name> - This is sent to a specific device like /home/sonoffctl/sonoff1. The name defaults to "sonoff", so put new devices on the network one at a time and set their names through this command over MQTT.
-* ota - This initiates a transactional update of the code in the sonoff.lua file from the defined web server path.
+* name <new name> - This is sent to a specific device like /home/sonoffctl/sonoff1. The name defaults to "sonoff", so put new 
+devices on the network one at a time and change their names through this command over MQTT before adding more.
+* ota - This is sent to a specific device and initiates a transactional update of the code in the sonoff.lua file from the defined web server path.
 
 
 # Code Architecture and OTA Details
@@ -41,7 +42,14 @@ The point of all this is that unless the code that enables Over The Air updates 
 
 # Installation and Usage
 
-Edit the sonoff.lua file to put in your WiFi network name and password. If you prefer to use different MQTT topics other than the defaults, change those as well.
+Edit the sonoff.lua file to set the following placeholder text (I'm going to test and reformat some things to move these into easily set variables at the top soon):
+
+* WIFI_NETWORK_NAME
+* WIFI_PASSWORD
+* OTA_HTTP_IP - Note there are two places where this needs to be changed. Change the HTTP server port and path as well if needed.
+* MQTT_SERVER_IP
+
+If you prefer to use different MQTT topics other than the defaults, change those as well.
 
 Flash your Sonoff device with NodeMCU and upload the "init.lua" and "sonoff.lua" files to the device.
 
