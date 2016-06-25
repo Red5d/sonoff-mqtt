@@ -39,6 +39,7 @@ If the "update" file contains "no", it continues on the normal process to run th
 
 The point of all this is that unless the code that enables Over The Air updates is modified either before manual upload or during an OTA operation, the code on the device will be able to apply new updates (for additional features or changes) wirelessly without having to plug into it via serial and manually update the code. Also, code with faulty syntax will be rejected so you won't accidently break the code and have to manually re-upload it.
 
+One note on the "version" variable in the sonoff.lua file. This is for if you make changes to the sonoff.lua file and perform an OTA update. Once the update completes and the device is back online, you can send the "list" command out and the sonoff send out its name and version so you can see if the update was successful.
 
 # Installation and Usage
 
