@@ -13,12 +13,14 @@ Using this code, the following commands can be sent over MQTT to control the dev
 
 Unless otherwise noted, these commands can be sent to either the main control channel (default /home/sonoffctl), or individual devices (like /home/sonoffctl/sonoff1) to control all the devices at once or only specific ones.
 
-Power Commands - Control the 120V relay on the device. "<sonoff name> <status>" will be sent to the /home/sonoff MQTT topic after these run to confirm the on/off status of the device.
+####Power Commands - Control the 120V relay on the device. 
+######The power status will be sent to the /home/sonoff MQTT topic after these run to confirm the on/off status of the device.
 * relay on - Turns relay power on 
 * relay off - Turns relay power off
 
-Other Commands - These tell the device to send status information or perform other functions that don't affect the relay power.
-* relay status - Returns relay status like: "<sonoff name> on"
+####Other Commands
+######These tell the device to send status information or perform other functions that don't affect the relay power.
+* relay status - Returns relay status like: "sonoff1 on"
 * list - This is sent to /home/sonoffctl (control all devices) and tells all the devices to send their name and software version to the /home/sonoff MQTT topic.
 * name <new name> - This is sent to a specific device like /home/sonoffctl/sonoff1. The name defaults to "sonoff", so put new 
 devices on the network one at a time and change their names through this command over MQTT before adding more.
